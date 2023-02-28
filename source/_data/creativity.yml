@@ -1,0 +1,35 @@
+- class_name: 开启创造力
+  creativity_list:
+    - name: Vue
+      color: "#b8f0ae"
+      icon: https://cdn.xiaoliu.life/wangzhan/vue.webp
+    - name: Java
+      color: "#fff"
+      icon: https://cdn.xiaoliu.life/wangzhan/Java.webp
+    - name: Docker
+      color: "#57b6e6"
+      icon: https://cdn.xiaoliu.life/wangzhan/docker.webp
+    - name: Webpack
+      color: "#2e3a41"
+      icon: https://cdn.xiaoliu.life/wangzhan/webpack.webp
+    - name: Photoshop
+      color: "#4082c3"
+      icon: https://cdn.xiaoliu.life/wangzhan/PS.webp
+    - name: Swift
+      color: "#eb6840"
+      icon: https://cdn.xiaoliu.life/wangzhan/swift.webp
+    - name: Python
+      color: "#fff"
+      icon: https://cdn.xiaoliu.life/wangzhan/python.webp
+    - name: Node
+      color: "#333"
+      icon: https://cdn.xiaoliu.life/wangzhan/node-logo.svg
+    - name: Git
+      color: "#df5b40"
+      icon: https://cdn.xiaoliu.life/wangzhan/git.webp
+    - name: Css
+      color: "#2c51db"
+      icon: https://cdn.xiaoliu.life/wangzhan/css.webp
+    - name: Js
+      color: "#f7cb4f"
+      icon: https://cdn.xiaoliu.life/wangzhan/js.webp

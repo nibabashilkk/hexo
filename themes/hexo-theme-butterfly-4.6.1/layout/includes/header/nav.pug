@@ -1,0 +1,58 @@
+nav#nav.show
+  #nav_group
+    .nav_left
+      #list-button
+        i.fas.fa-grip-vertical
+        #list-content
+          .tips 网站
+          .list-box
+            a.list-item(target='_blank' rel='noopener' href='/')
+              img(src='https://cdn.xiaoliu.life/about/head.jpg' alt='')
+              span 主页
+      a#site-name(href='/' title='博客首页')
+        span xiaoliu
+        i.fas.fa-home.fa-fw
+    #page_title
+      a(href='javascript:;' rel='noopener external nofollow' onclick='btf.scrollToDest(0, 500)' title='返回顶部' ) 爱加班的小刘
+    .menus_items
+      .menus_item
+        a.site-page.group.hide(href='javascript:void(0);' rel='noopener external nofollow')
+          i.fa-fw
+          span  文库
+          i.fas.fa-chevron-down
+        ul.menus_item_child
+          li
+            a.site-page.child(href='/archives/')
+              i.fa-fw.fa-solid.fa-table-list
+              span  文章列表
+          li
+            a.site-page.child(href='/essay/')
+              i.fa-fw.fa-solid.fa-box
+              span  即刻短文
+      .menus_item
+        a.site-page.group.hide(href='javascript:void(0);' rel='noopener external nofollow')
+          i.fa-fw
+          span  我的
+          i.fas.fa-chevron-down
+        ul.menus_item_child
+          li
+            a.site-page.child(href='https://vip.xiaoliu.life/' )
+              i.fa-fw.fa-solid.fa-images
+              span  电影解析
+          li
+            a.site-page.child(href='/about/')
+              i.fa-fw.fa-solid.fa-graduation-cap
+              span  我的空间
+    #buttons
+      div
+        a.site-page.social-icon.search(href='javascript:;' rel='noopener external nofollow' onclick='leonus.randomPost()' title='随便看看 - 随机访问一篇本站文章')
+          i.fas.fa-splotch.fa-fw
+      #switch-bg
+        a.site-page.social-icon(onclick='lkk.switchDarkMode()' title='切换模式 - 日夜交替，黑白互换。')
+          i.fas.fa-moon.fa-fw
+      #search-button
+        a.site-page.social-icon.search(title='搜索内容 - 搜一搜，省时又省力。')
+          i.fas.fa-search.fa-fw
+      #toggle-menu
+        a.site-page(title='打开菜单')
+          i.fas.fa-bars.fa-fw

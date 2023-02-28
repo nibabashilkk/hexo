@@ -1,0 +1,12 @@
+- class_name: 赞赏
+  reward_list:
+    - name: YOUNGbro
+      amount: 6.66
+      datatime: 2023-01-18 
+    - name: YOUNGbro
+      amount: 5
+      datatime: 2022-11-25
+    - name: 三言两语
+      amount: 2
+      datatime: 2022-10-15
+

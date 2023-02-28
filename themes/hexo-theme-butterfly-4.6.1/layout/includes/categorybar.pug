@@ -1,0 +1,9 @@
+#categoryBox.recent-post-item
+  ul.categoryBar-list
+    each i in site.data.categorybar
+      if is_current(i.url)
+        li.categoryBar-list-item.current(id=i.url)
+          a.categoryBar-list-link(href=url_for(i.url) rel='noopener external nofollow')= i.name 
+      else 
+        li.categoryBar-list-item(id=i.url)
+          a.categoryBar-list-link(href=url_for(i.url) rel='noopener external nofollow')= i.name 

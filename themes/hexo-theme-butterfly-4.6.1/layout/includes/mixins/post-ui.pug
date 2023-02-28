@@ -1,0 +1,151 @@
+mixin postUI(posts)
+  each article , index in page.posts.data
+    .recent-post-item
+      -
+        let link = article.link || article.path
+        let title = article.title || _p('no_title')
+        const position = theme.cover.position
+        let leftOrRight = position === 'both'
+          ? index%2 == 0 ? 'left' : 'right'
+          : position === 'left' ? 'left' : 'right'
+        let post_cover = article.cover
+        let no_cover = article.cover === false || !theme.cover.index_enable ? 'no-cover' : ''
+      -
+      if post_cover && theme.cover.index_enable
+        .post_cover(class=leftOrRight)
+          a(href=url_for(link) title=title)
+            if article.cover_type === 'img'
+              img.post-bg(src=url_for(post_cover) onerror=`this.onerror=null;this.src='${url_for(theme.error_img.post_page)}'` alt=title)
+            else
+              div.post-bg(style=`background: ${post_cover}`)
+      .recent-post-info(class=no_cover)
+        a.article-title(href=url_for(link) title=title)= title
+        .article-meta-wrap
+          if (is_home() && (article.top || article.sticky > 0))
+            span.article-meta
+              i.fas.fa-thumbtack.sticky
+              span.sticky= _p('sticky')
+              span.article-meta-separator |
+          if (theme.post_meta.page.date_type)
+            span.post-meta-date
+              if (theme.post_meta.page.date_type === 'both')
+                i.far.fa-calendar-alt
+                span.article-meta-label=_p('post.created')
+                time.post-meta-date-created(datetime=date_xml(article.date) title=_p('post.created') + ' ' + full_date(article.date) style='display: inline;')=date(article.date, config.date_format)
+                span.article-meta-separator |
+                i.fas.fa-history
+                span.article-meta-label=_p('post.updated')
+                time.post-meta-date-updated(datetime=date_xml(article.updated) title=_p('post.updated') + ' ' + full_date(article.updated) style='display: inline;')=date(article.updated, config.date_format)
+              else
+                - let data_type_updated = theme.post_meta.page.date_type === 'updated'
+                - let date_type = data_type_updated ? 'updated' : 'date'
+                - let date_icon = data_type_updated ? 'fas fa-history' :'far fa-calendar-alt'
+                - let date_title = data_type_updated ? _p('post.updated') : _p('post.created')
+                svg.icon(t='1675514596705' viewBox='0 0 1024 1024' version='1.1' xmlns='http://www.w3.org/2000/svg' p-id='3483' width='200' height='200')
+                  path(d='M512 512m-512 0a512 512 0 1 0 1024 0 512 512 0 1 0-1024 0Z' fill='#1BC1FA' p-id='3484')
+                  path(d='M501.9 164.2H280.2c-16 0-29 12.9-29 29s12.9 29 29 29h29v94.7c0 47.1 20.1 92.2 55.1 123.7l49 44.1c7.7 6.9 12 16.5 12 26.9 0 10.4-4.3 19.9-12 26.9l-49 44.1c-35 31.5-55.1 76.6-55.1 123.7V801h-29c-16 0-29 13-29 29s12.9 28.9 29 28.9h463c16 0 28.9-12.9 28.9-29s-12.9-28.9-29-28.9h-29v-94.7c0-47.1-20.1-92.2-55.1-123.7l-49-44.1c-7.7-7-12-16.5-12-26.9 0-10.4 4.3-19.9 12-26.9l49-44.1c35-31.5 55.1-76.6 55.1-123.7v-5c-21-4.4-42.6-11.1-64.2-20.1-72.7-30.5-127.1-79.5-148-127.6z m102.2 488.6c15 15 23.3 35 23.3 56.3v91.8H395.9v-91.8c0-21.3 8.3-41.2 23.3-56.3l77.1-77.1c8.5-8.5 22.2-8.5 30.7 0l77.1 77.1z' fill='#FFFFFF' p-id='3485')
+                  path(d='M743.2 222.1c16 0 29-12.9 29-28.9 0-16-12.9-29-29-29H501.9c20.9 48.1 75.2 97.1 148.1 127.4 21.6 9 43.2 15.7 64.2 20.1V222h29z' fill='#FFFFFF' opacity='.4' p-id='3486')
+                span.article-meta-label=date_title
+                time(datetime=date_xml(article[date_type]) title=date_title + ' ' + full_date(article[date_type]) style='display: inline;')=date(article[date_type], config.date_format)
+          if (theme.post_meta.page.categories && article.categories.data.length > 0)
+            span.article-meta
+              span.article-meta-separator |
+              i.fas.fa-inbox
+              each item, index in article.categories.data
+                a(href=url_for(item.path)).article-meta__categories #[=item.name]
+                if (index < article.categories.data.length - 1)
+                  i.fas.fa-angle-right.article-meta-link
+          if (theme.post_meta.page.tags && article.tags.data.length > 0)
+            span.article-meta.tags
+              span.article-meta-separator |
+              svg.icon(t='1675514804839' viewBox='0 0 1024 1024' version='1.1' xmlns='http://www.w3.org/2000/svg' p-id='13416' width='200' height='200')
+                path(d='M771.8912 108.1344H255.1296c-47.2576 0-85.5552 38.2976-85.5552 85.5552v156.4672h687.872V193.6896c0-47.2576-38.2976-85.5552-85.5552-85.5552z' fill='#ffa115' p-id='13417')
+                path(d='M233.0624 970.1888c-15.8208 0-31.6416-4.096-46.1824-12.2368-30.0544-16.896-48.0256-47.5648-48.0256-82.0736V197.4272c0-73.4208 59.6992-133.12 133.12-133.12h485.4272c73.4208 0 133.12 59.6992 133.12 133.12v672.768c0 34.7648-19.0464 66.6112-49.7152 82.9952a93.96736 93.96736 0 0 1-96.6656-4.6592l-197.1712-131.4816a32.75264 32.75264 0 0 0-35.1232-0.7168l-229.888 139.9296c-15.2064 9.2672-32.0512 13.9264-48.896 13.9264z m38.912-844.4416c-39.5264 0-71.68 32.1536-71.68 71.68v678.4c0 17.2544 11.6736 25.7024 16.6912 28.5184 5.0176 2.816 18.2784 8.3968 33.024-0.5632l229.888-139.9296c31.1296-18.944 70.8608-18.1248 101.1712 2.0992L778.24 897.4336c10.1888 6.8096 22.784 7.424 33.5872 1.6384 10.8032-5.7856 17.2544-16.5888 17.2544-28.8256V197.4272c0-39.5264-32.1536-71.68-71.68-71.68H271.9744z' fill='#474A54' p-id='13418')
+                path(d='M678.5024 287.0272H350.9248c-16.9472 0-30.72-13.7728-30.72-30.72s13.7728-30.72 30.72-30.72h327.6288c16.9472 0 30.72 13.7728 30.72 30.72s-13.7728 30.72-30.7712 30.72z' fill='#474A54' p-id='13419')
+              each item, index in article.tags.data
+                a(href=url_for(item.path)).article-meta__tags #[=item.name]
+                if (index < article.tags.data.length - 1)
+                  span.article-meta-link #[='•']
+          //- span.article-meta
+          //-     span.article-meta-separator |
+          //-     svg.icon(t='1675515630546' viewBox='0 0 1024 1024' version='1.1' xmlns='http://www.w3.org/2000/svg' p-id='15224' width='200' height='200')
+          //-       path(d='M520.533333 866.133333c-17.066667 0-29.866667-4.266667-38.4-17.066666l-38.4-38.4H166.4c-38.4 0-68.266667-29.866667-68.266667-68.266667V243.2c0-38.4 29.866667-68.266667 68.266667-68.266667h712.533333c38.4 0 68.266667 29.866667 68.266667 68.266667v494.933333c0 38.4-29.866667 68.266667-68.266667 68.266667h-277.333333l-38.4 38.4c-12.8 17.066667-25.6 21.333333-42.666667 21.333333zM166.4 234.666667c-4.266667 0-12.8 4.266667-12.8 12.8v494.933333c0 4.266667 4.266667 12.8 12.8 12.8H469.333333l55.466667 55.466667 51.2-55.466667h302.933333c4.266667 0 12.8-4.266667 12.8-12.8V243.2c0-4.266667-4.266667-12.8-12.8-12.8H166.4z' fill='#6A3906' p-id='15225')
+          //-       path(d='M797.866667 682.666667h-554.666667c-21.333333 0-34.133333-17.066667-34.133333-34.133334V337.066667c0-21.333333 17.066667-38.4 34.133333-38.4h554.666667c21.333333 0 34.133333 17.066667 34.133333 34.133333v311.466667c4.266667 21.333333-12.8 38.4-34.133333 38.4z' fill='#F5CB2B' p-id='15226')
+          //-       path(d='M708.266667 443.733333H337.066667c-17.066667 0-29.866667-12.8-29.866667-29.866666 0-17.066667 12.8-29.866667 29.866667-29.866667h371.2c17.066667 0 29.866667 12.8 29.866666 29.866667 0 17.066667-12.8 29.866667-29.866666 29.866666zM512 622.933333H337.066667c-17.066667 0-29.866667-12.8-29.866667-29.866666 0-17.066667 12.8-29.866667 29.866667-29.866667H512c17.066667 0 29.866667 12.8 29.866667 29.866667 0 17.066667-12.8 29.866667-29.866667 29.866666z' fill='#6A3906' p-id='15227')
+          //-     a.twikoo-count(href="https://xiaoliu.life/p/20221017a.html#post-comment")
+          //-       span#twikoo-count
+          //-         i.fa-solid.fa-spinner.fa-spin
+
+          
+          mixin countBlockInIndex
+            - needLoadCountJs = true
+            span.article-meta
+              span.article-meta-separator |
+              i.fas.fa-comments
+              if block
+                block
+              span.article-meta-label= ' ' + _p('card_post_count')
+          
+          if theme.comments.card_post_count
+            case theme.comments.use[0]
+              when 'Disqus'
+                +countBlockInIndex
+                  a(href=full_url_for(link) + '#disqus_thread')
+                    i.fa-solid.fa-spinner.fa-spin
+              when 'Disqusjs'
+                +countBlockInIndex
+                  a(href=full_url_for(link) + '#disqusjs')
+                    span.disqus-comment-count(data-disqus-url=full_url_for(link))
+                      i.fa-solid.fa-spinner.fa-spin
+              when 'Valine'
+                +countBlockInIndex
+                  a(href=url_for(link) + '#post-comment')
+                    span.valine-comment-count(data-xid=url_for(link))
+                      i.fa-solid.fa-spinner.fa-spin
+              when 'Waline'
+                +countBlockInIndex
+                  a(href=url_for(link) + '#post-comment')
+                    span.waline-comment-count(id=url_for(link))
+                      i.fa-solid.fa-spinner.fa-spin
+              when 'Twikoo'
+                +countBlockInIndex
+                  a.twikoo-count(href=url_for(link) + '#post-comment')
+                    i.fa-solid.fa-spinner.fa-spin
+              when 'Facebook Comments'
+                +countBlockInIndex
+                  a(href=url_for(link) + '#post-comment')
+                    span.fb-comments-count(data-href=urlNoIndex(article.permalink))
+              when 'Remark42'
+                +countBlockInIndex
+                  a(href=url_for(link) + '#post-comment')
+                    span.remark42__counter(data-url=urlNoIndex(article.permalink))
+                      i.fa-solid.fa-spinner.fa-spin
+              when 'Artalk'
+                +countBlockInIndex
+                  a(href=url_for(link) + '#post-comment')
+                    span.artalk-count(data-page-key=url_for(link))
+                      i.fa-solid.fa-spinner.fa-spin
+
+        //- Display the article introduction on homepage
+        case theme.index_post_content.method
+          when false
+            - break
+          when 1
+            .content!= article.description
+          when 2
+            if article.description
+              .content!= article.description
+            else
+              - const content = strip_html(article.content)
+              - let expert = content.substring(0, theme.index_post_content.length) 
+              - content.length > theme.index_post_content.length ? expert += ' ...' : ''
+              .content!= expert
+          default
+            - const content = strip_html(article.content)
+            - let expert = content.substring(0, theme.index_post_content.length) 
+            - content.length > theme.index_post_content.length ? expert += ' ...' : ''
+            .content!= expert
+
+    if theme.ad && theme.ad.index
+      if (index + 1) % 3 == 0
+        .recent-post-item.ads-wrap!=theme.ad.index

@@ -1,0 +1,14 @@
+#swiperBox.recent-post-item
+  //- 文章容器
+  #swiper_container.blog-slider.swiper-container-fade.swiper-container-horizontal
+    .blog-slider__wrp.swiper-wrapper
+      //- 文章卡片
+      each item in site.data.swiper
+        - cover = 'background: url("'+item.cover+'"); width: 815px;'
+        .blog-slider__item.swiper-slide(style=cover)
+          .blog-slider__content
+            a.blog-slider__title(onclick=`pjax.loadUrl("` + item.link + `");` href='javascript:void(0);'   alt='')= item.title
+            span.blog-slider__code= item.timeline
+            .blog-slider__text= item.description ? item.description : default_descr 
+    //- 轮播图组件 
+    .blog-slider__pagination.swiper-pagination-clickable.swiper-pagination-bullets

@@ -1,0 +1,16 @@
+- name: 首页
+  url: /
+
+- name: 技术分享
+  url: /categories/技术分享
+
+- name: 微信文章
+  url: /categories/微信文章/
+
+- name: 日常推荐
+  url: /categories/日常推荐/
+
+- name: 科学上网
+  url: /categories/科学上网/
+- name: 闲聊
+  url: /categories/闲聊/
