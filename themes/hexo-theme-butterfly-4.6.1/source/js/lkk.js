@@ -37,7 +37,7 @@ var lkk = {
             }), 3e3)
         }
         let n = lkk.loadData("talk", 10);
-        n ? e(n) : fetch("https://xcx.xiaoliu.life/essay/get").then((e => e.json())).then((n => {e(n)
+        n ? e(n) : fetch("http://43.143.231.27:8081/essay/get").then((e => e.json())).then((n => {e(n)
             , lkk.saveData("talk", n)
         }))
     },
