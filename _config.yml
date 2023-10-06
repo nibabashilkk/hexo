@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 爱加班的小刘
+title: 测试站点
 subtitle: ''
 description: ""
 keywords: 
@@ -107,9 +107,9 @@ deploy:
 plugins:
   - hexo-algoliasearch
 algolia:
-  appId: "6UY1K05QI8"
-  apiKey: "f10f5582949dc1b2ffdeda1239d21502"
-  adminApiKey: "f22d1114822e0aa323a2dd834ea8f92e"
+  appId: ""
+  apiKey: ""
+  adminApiKey: ""
   chunkSize: 5000
   indexName: "hexo"
   fields:
