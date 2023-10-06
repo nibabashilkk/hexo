@@ -4,8 +4,14 @@
   title: 上班摸鱼，这几个网站就够了
   description: 分享几个摸鱼专用网站
 
-- cover: https://cdn.xiaoliu.life/tc/20221207a/cover.png
+- cover: https://cdn.xiaoliu.life/tc/20221207a/cover.webp
   timeline: '2022-12-07'
   link: /p/20221207a
   title: p站，一个神奇的网站
   description: 国内政策原因，不能访问到国外的pixiv，分享几个国内好用的镜像站。
+
+- cover: https://cdn.xiaoliu.life/tc/20230703a/cover.webp
+  timeline: '2023-07-03'
+  link: /p/20230703a
+  title: 全网最强的下载神器——IDM介绍
+  description: 互联网上资源有很多，没有一款超强的下载器怎么能行？

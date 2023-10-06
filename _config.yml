@@ -13,8 +13,8 @@ timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://xiaoliu.life
-permalink: p/:id/
+url: https://www.xiaoliu.life
+permalink: p/:id
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -124,17 +124,17 @@ algolia:
 
 # hexo-butterfly-swiper
 # see https://akilar.top/posts/8e1264d1/
-swiper:
-  enable: false # 开关
-  priority: 5 #过滤器优先权
-  enable_page: / # 应用页面
-  timemode: date #date/updated
-  layout: # 挂载容器类型
-    type: id
-    name: recent-posts
-    index: 0
-  default_descr: 再怎么看我也不知道怎么描述它的啦！
-  # swiper_css: https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css #swiper css依赖
-  swiper_js: https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/Swiper/8.0.6/swiper-bundle.min.js #swiper js依赖
-  custom_css: https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css # 适配主题样式补丁
-  custom_js: https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js # swiper初始化方法
+# swiper:
+#   enable: false # 开关
+#   priority: 5 #过滤器优先权
+#   enable_page: / # 应用页面
+#   timemode: date #date/updated
+#   layout: # 挂载容器类型
+#     type: id
+#     name: recent-posts
+#     index: 0
+#   default_descr: 再怎么看我也不知道怎么描述它的啦！
+#   # swiper_css: https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css #swiper css依赖
+#   swiper_js: https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/Swiper/8.0.6/swiper-bundle.min.js #swiper js依赖
+#   custom_css: https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css # 适配主题样式补丁
+#   custom_js: https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js # swiper初始化方法

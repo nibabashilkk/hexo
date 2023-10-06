@@ -28,6 +28,7 @@ var lkk = {
 
         function e(e) {
             let n = "";
+            console.log(e);
             e.forEach(((e, t) => {
                 n += `<li class="item item-${t+1}">${e.content}</li>`,console.log(e.content)
             }));
@@ -37,8 +38,10 @@ var lkk = {
             }), 3e3)
         }
         let n = lkk.loadData("talk", 10);
-        n ? e(n) : fetch("http://43.143.231.27:8081/essay/get").then((e => e.json())).then((n => {e(n)
-            , lkk.saveData("talk", n)
+        n ? e(n) : fetch("https://www.xiaoliu.life/api/essay/get").then((e =>
+            e.json()
+            )).then((n => {e(n.data)
+            , lkk.saveData("talk", n.data)
         }))
     },
     swiper: () => {
@@ -80,13 +83,13 @@ var lkk = {
         let l = document.getElementById("runtime");
         l && (l.innerHTML = a), setTimeout(lkk.runtime, 1e3)
     },
-    getComment: () => {
-        var getApi = "https://xcx.xiaoliu.life/comment/get/";
-        var url = window.location.url;
-        console.log(url);
-        var urlBase64 = window.btoa(url);
-        console.log(getApi + urlBase64);
-        fetch(getApi + urlBase64).then(res => console.log(res));
+    randomArticle: () =>{
+        fetch("https://www.xiaoliu.life/api/article/getRandomArticle").then(data=>data.json()).then(data=>{
+            window.location.href = data.data.slice(24,36);
+        })
+    },
+    setPageTitle: () => {
+        document.querySelector("#page_title a").innerHTML = document.title.replace(/\s*\|\s*爱加班的小刘/g, "")
     }
 }
 window.onkeydown = e => {
@@ -98,6 +101,7 @@ function whenDOMReady() {
     lkk.indexTalk();
     lkk.swiper();
     lkk.runtime();
+    lkk.setPageTitle();
 }
 
 whenDOMReady()

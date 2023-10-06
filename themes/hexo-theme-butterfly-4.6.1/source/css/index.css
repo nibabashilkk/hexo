@@ -40,7 +40,8 @@ abbr[title] {
 
 b,
 strong {
-    font-weight: bolder
+    font-weight: bolder;
+    color: var(--lkk-purple)
 }
 
 code,
@@ -1733,10 +1734,13 @@ figure.highlight pre .tag .attr {
 }
 
 #article-container code {
-    padding: 2px 4px;
-    background: 0 0;
-    color: #4976f5;
-    font-weight: 700
+    color: #fff;
+    padding: .2rem .4rem;
+    border-radius: 4px;
+    margin: 0 4px;
+    background: #FF7C7C;
+    line-height: 2;
+    box-shadow:  0 8px 16px -4px #2c2d300c;
 }
 
 #article-container pre {
@@ -5697,58 +5701,46 @@ h1.page-title+.tag-cloud-list {
     color: #ffeb5f
 }
 
-.loading-bg {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: box;
+.loading-bg{
     display: flex;
     width: 100%;
     height: 100%;
     position: fixed;
-    background: rgba(255, 255, 255, .85);
-    backdrop-filter: blur(20px) saturate(180%);
-    z-index: 999999;
+    background: var(--lkk-card-bg);
+    z-index: 1001;
     opacity: 1;
-    -ms-filter: none;
-    filter: none;
-    -webkit-transition: .3s;
-    -moz-transition: .3s;
-    -o-transition: .3s;
-    -ms-transition: .3s;
-    transition: .3s
+    transition: .3s;
 }
-
 #loading-box .loading-img {
     width: 100px;
+    height: 100px;
     border-radius: 50%;
     margin: auto;
-    -webkit-animation-duration: .5s;
-    -moz-animation-duration: .5s;
-    -o-animation-duration: .5s;
-    -ms-animation-duration: .5s;
-    animation-duration: .5s;
-    -webkit-animation-name: loadingAction;
-    -moz-animation-name: loadingAction;
-    -o-animation-name: loadingAction;
-    -ms-animation-name: loadingAction;
+    border: 4px solid #f0f0f2;
+    animation-duration: .3s;
     animation-name: loadingAction;
-    -webkit-animation-iteration-count: infinite;
-    -moz-animation-iteration-count: infinite;
-    -o-animation-iteration-count: infinite;
-    -ms-animation-iteration-count: infinite;
     animation-iteration-count: infinite;
-    -webkit-animation-direction: alternate;
-    -moz-animation-direction: alternate;
-    -o-animation-direction: alternate;
-    -ms-animation-direction: alternate;
-    animation-direction: alternate
+    animation-direction: alternate;
 }
+#loading-box .loading-image-dot{
+    width: 30px;
+    height: 30px;
+    background: #6bdf8f;
+    position: absolute;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    top: 50%;
+    left: 50%;
+    transform: translate(18px, 24px);
+}
+.loading-img {
+    background: url(https://cdn.xiaoliu.life/about/head.jpg) no-repeat center center;
+    background-size: cover;
+  }
 
 #loading-box.loaded .loading-bg {
     opacity: 0;
-    pointer-events: none
+    z-index: -1000;
 }
 
 @-moz-keyframes loadingAction {

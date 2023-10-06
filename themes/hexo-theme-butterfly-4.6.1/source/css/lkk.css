@@ -25,9 +25,16 @@
     --lkk-404-bg: rgb(24, 24, 30)
 }
 
+@font-face {
+    font-family: 'pingfang';
+    src: url('pingfang.woff2'); 
+    font-weight: normal;
+    font-style: normal;
+  }
 body {
     background-color: #f7f9fe;
-    overflow: overlay !important
+    overflow: overlay !important;
+    font-family: pingfang;
 }
 
 [data-theme=dark] body {
